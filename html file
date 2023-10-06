@@ -1,1 +1,34 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My project</title>
+</head>
+<body>
+    <h1> my first topic</h1>
+    <p> this is a paragrpah provided with information etc.</p>
+
+    <h2> this is my second topic</h2>
+    <p> in this paragrahph i introduce you with my 5DS</p>
+
+
+    <table> 
+        <tr>
+            <th> First name </th>
+            <th> Last name</th>
+            <th> Grade</th>
+        </tr>
+        <tr>
+            <td> kiko</th>
+            <td> Jopi</th>
+            <td> 8 </th>
+
+        </tr>
+
+    < img src="stick.jpeg"/>
+    <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flipovercoach.nl%2Finspiratie%2F2015%2F12%2F29%2Fvoor-elk-probleem-een-plaatje&psig=AOvVaw1DLYeVRp2-DkamAfbYXJ9V&ust=1696664136356000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNiz08r04IEDFQAAAAAdAAAAABAE" > Text to be viewed in browser </a>
+
+</body>
+</html>
