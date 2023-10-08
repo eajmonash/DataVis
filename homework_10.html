@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map visualisation homework 10</title>
+</head>
+<body>
+      <h2> visualisation 2 </h2>
+        <div id="vis"/>
+        <script>
+          const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Airports in the US",
+        "width": 1000,
+        "height": 1000,
+        "params": [
+          {
+            "name": "zoom_level",
+            "value": 30000,
+            "bind": {
+              "input": "range",
+              "min": 0,
+              "max": 1000,
+              "step": 10,
+              "name": "Zoom: "
+            }
+          }
+        ],
+        "projection": {"type": "equirectangular", "scale": {"expr": "zoom_level"}},
+        "vconcat": [
+          {
+            "layer": [
+              {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/us-10m.json",
+                  "format": {"type": "topojson", "feature": "states"}
+                },
+                "projection": {"type": "albersUsa"},
+                "width": 700,
+                "height": 700,
+                "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+                "selection": {"zoom": {"type": "interval", "bind": "scales"}},
+                "encoding": {"text": {"field": "state", "type": "nominal"}}
+              },
+              {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/airports.csv"
+                },
+                "projection": {"type": "albersUsa"},
+                "mark": {"type": "circle", "size": 10, "color": "darkblue"},
+                "encoding": {
+                  "longitude": {"field": "longitude", "type": "quantitative"},
+                  "latitude": {"field": "latitude", "type": "quantitative"},
+                  "tooltip": [
+                    {"field": "name", "type": "nominal", "title": "Airport Name"},
+                    {"field": "city", "type": "nominal", "title": "City"},
+                    {"field": "state", "type": "nominal", "title": "State"}
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/airports.csv"
+            },
+            "width": 700,
+            "height": 400,
+            "mark": "bar",
+            "encoding": {
+              "x": {"field": "state", "type": "nominal", "title": "State"},
+              "y": {
+                "aggregate": "count",
+                "type": "quantitative",
+                "title": "Number of Airports"
+              }
+            }
+          }
+        ],
+        "config": {}
+      };
+          vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+        </script>
+
+
+    
+</body>
+</html>
